@@ -11,4 +11,27 @@ public class PlayersService(IPlayersRepository playersRepository) : IPlayersServ
     {
         return _playersRepository.GetPlayersAsync();
     }
+
+    public async Task<Player> GetPlayerByIdAsync(long id)
+    {
+        var player = await _playersRepository.GetPlayerByIdAsync(id)
+            ?? throw new KeyNotFoundException($"Player with ID {id} not found");
+
+        return player;
+    }
+
+    public Task<Player> CreatePlayerAsync(Player player)
+    {
+        return _playersRepository.AddPlayerAsync(player);
+    }
+
+    public Task<Player> UpdatePlayerAsync(Player player)
+    {
+        return _playersRepository.UpdatePlayerAsync(player);
+    }
+
+    public async Task<bool> DeletePlayerAsync(long id)
+    {
+        return await _playersRepository.DeletePlayerAsync(id);
+    }
 }

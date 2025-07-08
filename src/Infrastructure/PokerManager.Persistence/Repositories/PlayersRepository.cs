@@ -13,7 +13,7 @@ public class PlayersRepository(PokerManagerDbContext dbContext) : IPlayersReposi
         return await _dbContext.Players.ToListAsync();
     }
 
-    public async Task<Player?> GetPlayerByIdAsync(Guid id)
+    public async Task<Player?> GetPlayerByIdAsync(long id)
     {
         return await _dbContext.Players.FindAsync(id);
     }
@@ -42,7 +42,7 @@ public class PlayersRepository(PokerManagerDbContext dbContext) : IPlayersReposi
         return existingPlayer;
     }
 
-    public async Task<bool> DeletePlayerAsync(Guid id)
+    public async Task<bool> DeletePlayerAsync(long id)
     {
         var player = await GetPlayerByIdAsync(id);
         if (player == null)

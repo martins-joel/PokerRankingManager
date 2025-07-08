@@ -84,7 +84,7 @@ public class PlayersRepositoryTests
         var repository = new PlayersRepository(dbContext);
 
         // Act
-        var result = await repository.GetPlayerByIdAsync(Guid.NewGuid());
+        var result = await repository.GetPlayerByIdAsync(123);
 
         // Assert
         Assert.Null(result);
@@ -130,7 +130,7 @@ public class PlayersRepositoryTests
         // Arrange
         var dbContext = CreateInMemoryDbContext();
         var repository = new PlayersRepository(dbContext);
-        var newPlayer = new Player { Id = Guid.NewGuid(), Name = "New Player" };
+        var newPlayer = new Player { Id = 15, Name = "New Player" };
 
         // Act
         var result = await repository.AddPlayerAsync(newPlayer);
@@ -170,7 +170,7 @@ public class PlayersRepositoryTests
         // Arrange
         var dbContext = CreateInMemoryDbContext();
         var repository = new PlayersRepository(dbContext);
-        var nonExistentPlayer = new Player { Id = Guid.NewGuid(), Name = "Ghost" };
+        var nonExistentPlayer = new Player { Id = 20, Name = "Ghost" };
 
         // Act & Assert
         await Assert.ThrowsAsync<KeyNotFoundException>(() => repository.UpdatePlayerAsync(nonExistentPlayer));
@@ -203,7 +203,7 @@ public class PlayersRepositoryTests
         var repository = new PlayersRepository(dbContext);
 
         // Act
-        bool result = await repository.DeletePlayerAsync(Guid.NewGuid());
+        bool result = await repository.DeletePlayerAsync(123);
 
         // Assert
         Assert.False(result);
