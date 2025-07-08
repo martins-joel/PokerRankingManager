@@ -10,4 +10,8 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="9.0.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Core\PokerManager.Application\PokerManager.Application.csproj" />
+  </ItemGroup>
+
 </Project>
