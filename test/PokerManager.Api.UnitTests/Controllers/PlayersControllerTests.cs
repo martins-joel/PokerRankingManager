@@ -6,7 +6,7 @@ using PokerManager.Application.Services;
 using PokerManager.Domain.Models;
 using PokerManager.UnitTests.Fixtures;
 
-namespace PokerManager.UnitTests;
+namespace PokerManager.UnitTests.Controllers;
 
 public class PlayersControllerTests
 {
