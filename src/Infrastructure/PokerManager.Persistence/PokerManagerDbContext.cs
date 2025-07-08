@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using PokerManager.Domain.Models;
+using PokerManager.Domain.Entities;
 
 namespace PokerManager.Persistence;
 

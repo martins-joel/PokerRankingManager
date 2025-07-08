@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using PokerManager.Domain.Models;
+using PokerManager.Domain.Entities;
 using PokerManager.Persistence;
 using PokerManager.Persistence.Repositories;
 using PokerManager.UnitTests.Fixtures;

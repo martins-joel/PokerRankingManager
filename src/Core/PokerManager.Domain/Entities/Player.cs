@@ -1,4 +1,4 @@
-﻿namespace PokerManager.Domain.Models;
+﻿namespace PokerManager.Domain.Entities;
 
 public class Player
 {

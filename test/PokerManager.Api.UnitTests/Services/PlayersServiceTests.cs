@@ -1,7 +1,7 @@
 ﻿using Moq;
 using PokerManager.Application.Abstractions;
 using PokerManager.Application.Services;
-using PokerManager.Domain.Models;
+using PokerManager.Domain.Entities;
 using PokerManager.UnitTests.Fixtures;
 
 namespace PokerManager.UnitTests.Services;

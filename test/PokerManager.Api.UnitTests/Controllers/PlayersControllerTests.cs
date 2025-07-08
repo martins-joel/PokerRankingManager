@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Moq;
 using PokerManager.Api.Controllers;
 using PokerManager.Application.Services;
-using PokerManager.Domain.Models;
+using PokerManager.Domain.Entities;
 using PokerManager.UnitTests.Fixtures;
 
 namespace PokerManager.UnitTests.Controllers;

@@ -1,5 +1,5 @@
 ﻿using PokerManager.Application.Abstractions;
-using PokerManager.Domain.Models;
+using PokerManager.Domain.Entities;
 
 namespace PokerManager.Application.Services;
 

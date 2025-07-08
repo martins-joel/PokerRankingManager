@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PokerManager.Application.Services;
-using PokerManager.Domain.Models;
+using PokerManager.Domain.Entities;
 
 namespace PokerManager.Api.Controllers;
 
