@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using PokerManager.Application.Abstractions;
+using PokerManager.Persistence.Context;
 using PokerManager.Persistence.Repositories;
 
 namespace PokerManager.Persistence;
