@@ -1,9 +1,15 @@
-﻿using PokerManager.Application.Abstractions;
+﻿using Microsoft.EntityFrameworkCore;
+using PokerManager.Application.Abstractions;
 using PokerManager.Domain.Models;
 
 namespace PokerManager.Persistence.Repositories;
 
-public class PlayersRepository : IPlayersRepository
+public class PlayersRepository(PokerManagerDbContext dbContext) : IPlayersRepository
 {
-    public Task<List<Player>> GetPlayersAsync() => throw new NotImplementedException();
+    private readonly PokerManagerDbContext _dbContext = dbContext;
+
+    public async Task<List<Player>> GetPlayersAsync()
+    {
+        return await _dbContext.Players.ToListAsync();
+    }
 }
