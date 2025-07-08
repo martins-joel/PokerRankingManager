@@ -1,4 +1,5 @@
 using PokerManager.Application;
+using PokerManager.Persistence;
 
 namespace PokerManager.Api;
 
@@ -10,6 +11,7 @@ public class Program
 
         // Add services to the container.
         builder.Services.AddApplicationServices();
+        builder.Services.AddPersistenceServices();
         builder.Services.AddControllers();
 
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
