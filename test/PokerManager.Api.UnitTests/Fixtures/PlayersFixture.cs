@@ -1,6 +1,6 @@
 ﻿using PokerManager.Domain.Models;
 
-namespace PokerManager.Api.UnitTests.Fixtures;
+namespace PokerManager.UnitTests.Fixtures;
 
 public static class PlayersFixture
 {

@@ -2,11 +2,11 @@
 using Microsoft.AspNetCore.Mvc;
 using Moq;
 using PokerManager.Api.Controllers;
-using PokerManager.Api.UnitTests.Fixtures;
 using PokerManager.Application.Services;
 using PokerManager.Domain.Models;
+using PokerManager.UnitTests.Fixtures;
 
-namespace PokerManager.Api.UnitTests;
+namespace PokerManager.UnitTests;
 
 public class PlayersControllerTests
 {
