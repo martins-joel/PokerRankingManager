@@ -1,0 +1,24 @@
+@host = http://localhost:5133
+
+### Variables
+@playerId = 2
+@playerName = John Doe
+
+### Get all players
+GET {{host}}/api/players
+Accept: application/json
+
+### Get players (when empty - testing 404 scenario)
+GET {{host}}/api/players
+Accept: application/json
+
+### Get player by id
+GET {{host}}/api/players/{{playerId}}
+Accept: application/json
+
+### Create new player
+POST {{host}}/api/players/
+Content-Type: application/json
+{
+    "name": "{{playerName}}"
+}
