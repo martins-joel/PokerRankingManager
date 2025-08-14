@@ -16,6 +16,10 @@ public class Program
             builder.Configuration.GetConnectionString("DefaultConnection"));
         builder.Services.AddControllers();
 
+        // Add health checks
+        builder.Services.AddHealthChecks()
+            .AddDbContextCheck<PokerManager.Persistence.Context.PokerManagerDbContext>("Database");
+
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
@@ -32,6 +36,17 @@ public class Program
         app.UseAuthorization();
 
         app.MapControllers();
+        
+        // Map health check endpoints
+        app.MapHealthChecks("/health");
+        app.MapHealthChecks("/health/ready", new Microsoft.AspNetCore.Diagnostics.HealthChecks.HealthCheckOptions
+        {
+            Predicate = check => check.Tags.Contains("ready")
+        });
+        app.MapHealthChecks("/health/live", new Microsoft.AspNetCore.Diagnostics.HealthChecks.HealthCheckOptions
+        {
+            Predicate = _ => false
+        });
 
         app.Run();
     }
