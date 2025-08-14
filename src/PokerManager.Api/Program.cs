@@ -26,17 +26,13 @@ public class Program
 
         var app = builder.Build();
 
-        // Configure the HTTP request pipeline.
-        if (app.Environment.IsDevelopment())
-        {
-            app.UseSwagger(options => options.OpenApiVersion = Microsoft.OpenApi.OpenApiSpecVersion.OpenApi2_0);
-            app.UseSwaggerUI();
-        }
+        app.UseSwagger(options => options.OpenApiVersion = Microsoft.OpenApi.OpenApiSpecVersion.OpenApi2_0);
+        app.UseSwaggerUI();
 
         app.UseAuthorization();
 
         app.MapControllers();
-        
+
         // Map health check endpoints
         app.MapHealthChecks("/health");
         app.MapHealthChecks("/health/ready", new Microsoft.AspNetCore.Diagnostics.HealthChecks.HealthCheckOptions
