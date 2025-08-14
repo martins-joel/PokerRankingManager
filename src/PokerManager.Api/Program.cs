@@ -9,16 +9,23 @@ public class Program
     {
         var builder = WebApplication.CreateBuilder(args);
 
+        // Configure the application to use appsettings.json and environment-specific settings
+        builder.Configuration
+            .SetBasePath(builder.Environment.ContentRootPath)
+            .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+            .AddJsonFile($"appsettings.{builder.Environment.EnvironmentName}.json", optional: true)
+            .AddEnvironmentVariables(); // This will override settings from above
+
         // Add services to the container.
         builder.Services.AddApplicationServices();
         builder.Services.AddPersistenceServices();
         builder.Services.RegisterDbContext(
-            builder.Configuration.GetConnectionString("DefaultConnection"));
+            builder.Configuration.GetConnectionString("PMDatabaseConnection"));
         builder.Services.AddControllers();
 
         // Add health checks
         builder.Services.AddHealthChecks()
-            .AddDbContextCheck<PokerManager.Persistence.Context.PokerManagerDbContext>("Database");
+            .AddDbContextCheck<PokerManager.Persistence.Context.PokerManagerDbContext>("PMDatabase");
 
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         builder.Services.AddEndpointsApiExplorer();
