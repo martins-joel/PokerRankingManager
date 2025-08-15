@@ -1,5 +1,7 @@
+using Microsoft.EntityFrameworkCore;
 using PokerManager.Application;
 using PokerManager.Persistence;
+using PokerManager.Persistence.Context;
 
 namespace PokerManager.Api;
 
@@ -50,6 +52,13 @@ public class Program
         {
             Predicate = _ => false
         });
+
+        // Run migrations at startup
+        using (var scope = app.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<PokerManagerDbContext>();
+            db.Database.Migrate();
+        }
 
         app.Run();
     }
