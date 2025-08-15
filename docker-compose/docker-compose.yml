@@ -1,0 +1,42 @@
+services:
+  api:
+    build:
+      context: ../src
+      dockerfile: PokerManager.Api/Dockerfile
+    ports:
+      - "5000:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__PMDatabaseConnection=Host=db;Database=PokerManagerDb;Username=docker-username;Password=docker-password
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - poker-network
+
+  db:
+    image: postgres:16-alpine
+    container_name: poker-db
+    environment:
+      - POSTGRES_USER=docker-username
+      - POSTGRES_PASSWORD=docker-password
+      - POSTGRES_DB=PokerManagerDb
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - poker-network
+
+volumes:
+  postgres_data:
+    name: poker-manager-data
+
+networks:
+  poker-network:
+    name: poker-network
